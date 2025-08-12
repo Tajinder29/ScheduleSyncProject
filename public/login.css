@@ -1,0 +1,76 @@
+body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6e00ff, #9333ea);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+#form2{
+     background-color: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 350px;
+}
+a{
+    display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #6e00ff;
+      text-decoration: none;
+      font-weight: 500;
+}
+button{
+    width: 100%;
+      padding: 12px;
+      background-color: #6e00ff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+} 
+h1{
+     text-align: center;
+      color: #6e00ff;
+      margin-bottom: 30px;
+      font-size: 40px;
+}
+label{
+    display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #333;
+}
+button:hover {
+      background-color: #4c00c7;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 16px;
+    }
+.roles-container {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .roles-container label {
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .roles-container input {
+      margin-right: 5px;
+    }

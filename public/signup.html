@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup page</title>
+    <link rel="stylesheet" href="signup.css">
+</head> 
+<body> 
+    <div id="form">
+        <form onsubmit="Signup(event)" autocomplete="off">
+            <h1>Sign up</h1>
+            <label for="name">Name :</label>
+            <input type="text" name="username" id="name" placeholder="Enter your name">
+
+            <label for="email">WorkEmail:</label>
+            <input type="email" name="emailid"id="eml" placeholder="Enter your Email" autocomplete="off">
+
+            <label for="password">Password:</label>
+            <input type="password"name="password2" id="paswd" placeholder="Enter your Password" autocomplete="new-password">
+            
+            <label for="roles">Select Roles : </label>
+    <div class="roles-container">
+        <input type="radio" id="admin" name="roles" value="Admin">
+    <label for="admin">Admin</label>
+    <input type="radio" id="teacher" name="roles" value="Teacher">
+    <label for="teacher">Teacher</label><br>
+
+    </div>
+            <button type="submit" id="button">Create Account</button>
+            <a href="login.html">Already have an account? Login</a>
+        </form>
+    </div>
+
+    <script>
+        function Signup(event) {
+            event.preventDefault();  
+            const username=document.getElementById("name").value;
+            const email = document.getElementById("eml").value;
+            const paswd = document.getElementById("paswd").value;
+            const role=document.querySelector('input[name="roles"]:checked')?.value;
+             localStorage.setItem("username",username);
+            // localStorage.setItem("Email", email);
+            // localStorage.setItem("password", paswd);
+            // localStorage.setItem("Roles",role);
+            if(!role){
+              alert("plz select a role");
+               return; 
+             }
+            if (!email || ! paswd || !role) {
+                    alert("Please fill in all fields and select a role.");
+                    return;
+               }
+             const passwordCondition = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+          if (!passwordCondition.test( paswd)) {
+                     alert("Password must be at least 8 characters long and include:\n- Uppercase letter\n- Lowercase letter\n- Number\n- Special character");
+                   return;
+             }
+            const user={
+                name:username,
+                email:email,
+                password:paswd,
+                role:role
+            }
+            fetch("route/signup",{
+                method:"POST",
+                headers:{"Content-Type": "application/json"},
+                body:JSON.stringify(user),
+                credentials:'include'
+            })
+            .then(response=>{
+                if(response.ok){
+                   alert("Signup successful!");
+                window.location.href = "/login";  
+                }
+                else{
+                    return response.json().then(data => {
+                    alert("Signup failed: " + data.message);
+                });
+                }
+            })
+            .catch(error => {
+                
+            alert("Signup failed: " + error.message);
+        });
+              
+        }
+    </script>
+</body>
+</html>

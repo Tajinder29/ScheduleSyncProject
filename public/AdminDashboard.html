@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Data</title>
+    <link rel="stylesheet" href="AdminDashboard.css">
+
+</head>
+<body>
+   
+        <nav class="navbar"> 
+        <div class="logo">Schedule<span>Sync</span></div>
+    <div class="datetime"> 
+        <p id="date"></p>
+        <p id="time"></p>
+    </div>
+    <div class="profile">
+    <div class="datetime">
+    <p id="date"></p>
+    <p id="time"></p>
+  </div>  Logged in as <br><b id="username"></b> <span class="icon">👤</span>
+</div></nav>
+    <div class="main-container">
+ <aside class="sidebar">
+    <ul id="list"><a href="AdminDashboard.html" >📊 Dashboard</a><br>
+            <a href="#" >📅 Calendar</a><br>
+            <a href="approveleave.html" >📝 Approve Leave</a><br>
+            <a href="#" >📥 Inbox</a><br>
+            <button id="logoutBtn" style="margin-left: 10px; padding: 5px 10px; cursor: pointer;">🚪 Logout</button>
+        </ul>
+        <p class="current-view">Current View</p>
+        <button class="meeting">🤝 Meeting</button>
+        <button class="btn">☁️ Scheduling</button>
+        <button class="btn2">Upcoming Event</button>
+ </aside>
+ <section class="Dashboard">
+<div class="upperPart">
+    <div class="div">
+        <h3 id="totalectures">0</h3>
+        <p>Total Lectures</p>
+    </div>
+    <div class="div">
+         <h3 id="totaleft">0</h3>
+        <p>Total Left</p>
+    </div>
+    <div class="div">
+        <h3 id="totaldone">0</h3>
+        <p>Total Done</p>
+    </div>
+</div>
+<div class="faculty-leaves">
+        <h2 id="heading">On Leave Faculty</h2>
+        <div id="dynamic-leaves"></div>
+      </div>
+ </section>
+    </div>
+    <div id="modal" class="modal">
+  <div class="modal-content" id="modal-body">
+    <span class="modal-close" id="closeModalBtn">&times;</span>
+    
+  </div>
+</div>
+    <script src="AdminDashboard.js"></script>
+</body>
+</html>

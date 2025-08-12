@@ -1,0 +1,159 @@
+ body{
+    font-family: Arial, sans-serif;
+    background-color:  #f5f6fa;
+    margin:0;
+    padding:20px;
+ }
+ .status-badge{
+  margin-top: 5px;
+  padding:4px 10px;
+  border-radius: 4px;
+  width:fit-content;
+ }
+ .pending{
+  background-color: #ffeeba;
+  color: #856404;
+ }
+ .approved{
+  background-color: #d4edda;
+  color: #155724;
+ }
+ .rejected{
+   background-color: #f8d7da;
+  color: #721c24;
+ }
+ #leaveDiv{
+    max-width: 1000px;
+   margin: 0 auto;
+   text-align: center;
+ }
+ #h1{
+    font-size: 32px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+ }
+ #display-container{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+ }
+ .teacher-email-block{
+ background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+
+ }
+ .leave-request{
+    background-color: #ecf0f1;
+margin-top: 10px;
+padding: 10px;
+  border-radius: 8px;
+ }
+ .leave-request ul{
+    margin-top: 5px;
+    margin-left: 20px;
+ }
+#btn{
+    margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#btn:hover {
+  background-color: #3498db;
+}
+.buttonDiv{
+   display: flex;
+   justify-content: space-between;
+   margin-top: 10px;
+}
+.left-button,.right-button{
+   padding:6px 14px;
+   border:none;
+   border-radius: 5px;
+   font-weight: bold;
+  cursor: pointer;
+}
+.left-button{
+   background-color: #2196f3;
+  color: white;
+}
+.right-button{
+   background-color: #4caf50;
+  color: white;
+}
+.resultDiv{
+   margin-top:10px;
+   padding: 10px;
+   background-color: #f2f2f2;
+  border-radius: 8px;
+}
+.teacher-grid{
+   display:grid;
+   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+   gap:10px;
+    margin-top: 10px;
+}
+.teacher-card{
+    padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+.teacher-card p{
+    margin: 0 0 8px 0;
+  font-weight: 500;
+}
+.sendRequest {
+   background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sendRequest:hover {
+  background-color: #0056b3;
+}
+.modal{
+   display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-content {
+   background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+}
+.close-button{
+   color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-button:hover {
+  color: red;
+}
+@media(max-width: 600px) {
+   .modal-content {
+    width: 90%;
+  }
+  .teacher-grid {
+    grid-template-columns: 1fr;
+  }
+}

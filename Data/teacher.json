@@ -1,0 +1,43 @@
+[
+  {
+    "email": "teach1@gmail.com",
+    "date": "2025-07-28",
+    "reason": "fever",
+    "timetableForDate": [
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 1",
+        "subjectName": "Hindi",
+        "roomNo": "56",
+        "startTime": "09:00",
+        "endTime": "10:00"
+      },
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 2",
+        "subjectName": "History",
+        "roomNo": "67",
+        "startTime": "10:00",
+        "endTime": "11:00"
+      }
+    ]
+  },
+  {
+    "email": "teach2@gmail.com",
+    "date": "2025-07-28",
+    "reason": "headache",
+    "timetableForDate": [
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 3",
+        "subjectName": "Yoga",
+        "roomNo": "78",
+        "startTime": "11:00",
+        "endTime": "12:00"
+      }
+    ]
+  }
+]

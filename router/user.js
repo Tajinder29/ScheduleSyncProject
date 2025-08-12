@@ -1,0 +1,27 @@
+import express from 'express';
+import { signup ,login ,logout} from '../controller/authController.js';
+import { updateTimetable ,getTimetable ,getdata, getAllTeacherLeaves,getAllTeacherData,getAllTeacherEmails ,
+    updateLeaveStatus,getAllLeaves,getAllApprovedLeaves,sendAdjustmentRequest,getInboxRequests,getSessionEmail,acceptAdjustmentRequest,updateAdjustmentRequestStatus } from '../controller/TimetableController.js';
+import {getUserImage ,upload, uploadImage} from '../controller/multerConroller.js';
+const router=express.Router();
+router.post("/signup",signup);
+router.post("/login",login);
+router.post("/updateTimetable",updateTimetable);
+router.get("/getTimetable/:email", getTimetable);
+router.get("/getUserImage/:email", getUserImage);
+router.post("/uploadImage", upload.single("profilePic"), uploadImage);
+router.post("/getdata",getdata);
+router.get("/logout",logout); 
+router.get("/getAllTeacherLeaves",getAllTeacherLeaves);
+router.get("/getAllTeacherData",getAllTeacherData);
+router.get("/getAllTeacherEmails",getAllTeacherEmails);
+router.post("/updateLeaveStatus",updateLeaveStatus);
+router.post("/updateAdjustmentRequestStatus",updateAdjustmentRequestStatus);
+router.get("/getAllLeaves",getAllLeaves);
+router.get("/getAllApprovedLeaves",getAllApprovedLeaves);
+router.post("/sendAdjustmentRequest", sendAdjustmentRequest);
+router.get("/adjustment/inbox", getInboxRequests);
+router.get("/session/email", getSessionEmail);
+router.post("/acceptAdjustmentRequest ",acceptAdjustmentRequest );
+//router.post("/adjustment/accept" , acceptAdjustmentRequest");
+export default router;  

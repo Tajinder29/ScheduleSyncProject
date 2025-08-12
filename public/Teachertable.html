@@ -1,0 +1,135 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Data</title>
+     <link rel="stylesheet" href="Teachertable.css">
+</head>
+<body>
+        <nav class="navbar"> 
+        <div class="logo">Schedule<span>Sync</span></div>
+    <div class="datetime"> 
+        <p id="date"></p>
+        <p id="time"></p>
+    </div>
+    <div class="profile"><p id="pro">Logged in as</p><b id="username"></b> 
+     <img id="profilePic" src="/uploads/default.jpeg" width="50" height="50" style="border-radius:50%; margin-left:5px; cursor:pointer">
+    </div></nav>
+    
+    <div class="main-div">
+        <div class="main-container">
+ <aside>
+        <div class="sidebar">
+            <a href="summary.html">📊Dashboard</a><br><br>
+            <a href="#">📅Calender</a><br><br>
+            <a href="form.html">📝AppealLeave</a><br><br>
+            <a href="#">📥Inbox</a><br>
+            <button id="logout" onclick="logout()">Logout</button><br><br>
+            <p class="current-view">Current View</p>
+        <button class="meeting">🤝 Meeting</button>
+        <button class="btn">☁️ Scheduling</button>
+        <button class="btn2">Upcoming Event</button>
+        </div>
+        <div id="uploadPopup">
+        <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" id="profileImageInput" name="profileImage" accept="image/*" required>
+         <button type="submit">Upload Image</button>
+    </form></div>
+ </aside>
+    </div>
+    <div class="dottable">
+<table>
+    <thead>
+        <tr><th>Days/Time</th>
+            <th>Lecture 1<br>09:00-10:00</th><th>Lecture 2<br>10:00-11:00</th><th>Lecture 3<br>11:00-12:00</th><th>Lecture 4<br>12:00-01:00</th><th>Lecture 5<br>01:00-02:00</th><th>Lecture 6<br>02:00-03:00</th>
+            <th>Lecture 7<br>03:00-04:00</th><th>Lecture 8<br>04:00-05:00</th>
+        </tr>
+    </thead>
+   <tbody>
+     <!-- <tr><td>Monday</td><td id="Monday-Lecture 1"></td><td id="Monday-Lecture 2"></td><td id="Monday-Lecture 3"></td><td id="Monday-Lecture 4"></td><td id="Monday-Lecture 5"></td><td id="Monday-Lecture 6"></td><td id="Monday-Lecture 7"></td><td id="Monday-Lecture 8"></td></tr>
+     <tr><td>Tuesday</td><td id="Tuesday-Lecture 1"></td><td id="Tuesday-Lecture 2"></td><td id="Tuesday-Lecture 3"></td><td id="Tuesday-Lecture 4"></td><td id="Tuesday-Lecture 5"></td><td id="Tuesday-Lecture 6"></td><td id="Tuesday-Lecture 7"></td><td id="Tuesday-Lecture 8"></td></tr>
+     <tr><td>Wednesday</td><td id="Wednesday-Lecture 1"></td><td id="Wednesday-Lecture 2"></td><td id="Wednesday-Lecture 3"></td><td id="Wednesday-Lecture 4"></td><td id="Wednesday-Lecture 5"></td><td id="Wednesday-Lecture 6"></td><td id="Wednesday-Lecture 7"></td><td id="Wednesday-Lecture 8"></td></tr>
+     <tr><td>Thursday</td><td id="Thursday-Lecture 1"></td><td id="Thursday-Lecture 2"></td><td id="Thursday-Lecture 3"></td><td id="Thursday-Lecture 4"></td><td id="Thursday-Lecture 5"></td><td id="Thursday-Lecture 6"></td><td id="Thursday-Lecture 7"></td><td id="Thursday-Lecture 8"></td></tr>
+     <tr><td>Friday</td><td id="Friday-Lecture 1"></td><td id="Friday-Lecture 2"></td><td id="Friday-Lecture 3"></td><td id="Friday-Lecture 4"></td><td id="Friday-Lecture 5"></td><td id="Friday-Lecture 6"></td><td id="Friday-Lecture 7"></td><td id="Friday-Lecture 8"></td></tr>
+     <tr><td>Saturday</td><td id="Saturday-Lecture 1"></td><td id="Saturday-Lecture 2"></td><td id="Saturday-Lecture 3"></td><td id="Saturday-Lecture 4"></td><td id="Saturday-Lecture 5"></td><td id="Saturday-Lecture 6"></td><td id="Saturday-Lecture 7"></td><td id="Saturday-Lecture 8"></td></tr> -->
+  <tr>
+  <td>Monday</td>
+  <td id="Monday-1"></td>
+  <td id="Monday-2"></td>
+  <td id="Monday-3"></td>
+  <td id="Monday-4"></td>
+  <td id="Monday-5"></td>
+  <td id="Monday-6"></td>
+  <td id="Monday-7"></td>
+  <td id="Monday-8"></td>
+</tr>
+<tr>
+  <td>Tuesday</td>
+  <td id="Tuesday-1"></td>
+  <td id="Tuesday-2"></td>
+  <td id="Tuesday-3"></td>
+  <td id="Tuesday-4"></td>
+  <td id="Tuesday-5"></td>
+  <td id="Tuesday-6"></td>
+  <td id="Tuesday-7"></td>
+  <td id="Tuesday-8"></td>
+</tr>
+<tr>
+  <td>Wednesday</td>
+  <td id="Wednesday-1"></td>
+  <td id="Wednesday-2"></td>
+  <td id="Wednesday-3"></td>
+  <td id="Wednesday-4"></td>
+  <td id="Wednesday-5"></td>
+  <td id="Wednesday-6"></td>
+  <td id="Wednesday-7"></td>
+  <td id="Wednesday-8"></td>
+</tr>
+<tr>
+  <td>Thursday</td>
+  <td id="Thursday-1"></td>
+  <td id="Thursday-2"></td>
+  <td id="Thursday-3"></td>
+  <td id="Thursday-4"></td>
+  <td id="Thursday-5"></td>
+  <td id="Thursday-6"></td>
+  <td id="Thursday-7"></td>
+  <td id="Thursday-8"></td>
+</tr>
+<tr>
+  <td>Friday</td>
+  <td id="Friday-1"></td>
+  <td id="Friday-2"></td>
+  <td id="Friday-3"></td>
+  <td id="Friday-4"></td>
+  <td id="Friday-5"></td>
+  <td id="Friday-6"></td>
+  <td id="Friday-7"></td>
+  <td id="Friday-8"></td>
+</tr>
+<tr>
+  <td>Saturday</td>
+  <td id="Saturday-1"></td>
+  <td id="Saturday-2"></td>
+  <td id="Saturday-3"></td>
+  <td id="Saturday-4"></td>
+  <td id="Saturday-5"></td>
+  <td id="Saturday-6"></td>
+  <td id="Saturday-7"></td>
+  <td id="Saturday-8"></td>
+</tr>
+    </tbody>
+</table>
+    </div>
+    </div>
+    <div class="inbox-section" style="margin: 20px;">
+  <h2> Adjustment Requests</h2>
+  <div id="inbox-container">
+    <!-- Adjustment requests will appear here -->
+  </div>
+</div>
+    <script src="Teachertable.js"></script>
+</body>
+
+</html>

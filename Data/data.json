@@ -1,0 +1,140 @@
+[
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "teach1@gmail.com",
+    "timetable": [
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 1",
+        "subjectName": "Hindi",
+        "roomNo": "",
+        "startTime": "10:00",
+        "endTime": ""
+      },
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 2",
+        "subjectName": "History",
+        "roomNo": "67",
+        "startTime": "10:00",
+        "endTime": "11:00"
+      }
+    ],
+    "role": "Teacher"
+  },
+  {
+    "email": "teach2@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Teacher",
+    "timetable": [
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 3",
+        "subjectName": "Yoga",
+        "roomNo": "78",
+        "startTime": "11:00",
+        "endTime": "12:00"
+      }
+    ]
+  },
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "teach3@gmail.com",
+    "timetable": [
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 2",
+        "subjectName": "Science",
+        "roomNo": "90",
+        "startTime": "10:00",
+        "endTime": "11:00"
+      },
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 7",
+        "subjectName": "Hindi",
+        "roomNo": "78",
+        "startTime": "03:00",
+        "endTime": "04:00"
+      }
+    ],
+    "role": "Teacher"
+  },
+  {
+    "email": "teach4@gmail.com",
+    "timetable": [
+      {
+        "day": "Monday",
+        "date": "2025-07-28",
+        "lecture": "Lecture 3",
+        "subjectName": "Hindi",
+        "roomNo": "12",
+        "startTime": "12:00",
+        "endTime": "01:00"
+      }
+    ]
+  },
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "teacher1@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  },
+  {
+    "email": "teach1@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Teacher",
+    "timetable": []
+  },
+  {
+    "email": "tajinder@gmail.com",
+    "password": "123qwe!Q",
+    "role": "Admin",
+    "timetable": []
+  }
+]

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div id="form">
+        <form onsubmit="fun(event)" id="form-submit">
+        <h1>Add Time Table Details</h1>
+            <label for="num"> Lecture Number</label><br>
+            <select id="select"><option value="1">Lecture 1</option>
+            <option value="2">Lecture 2</option>
+        <option value="3">Lecture 3</option><option value="4">Lecture 4</option><option value="5">Lecture 5</option>
+    <option value="6">Lecture 6</option><option value="7">Lecture 7</option><option value="8">Lecture 8</option>
+</select><br><br>
+
+            <label for="name">Subject Name</label><br>
+        <select  id="subname"><option>Hindi</option><option>English</option><option>Math</option>
+        <option>History</option><option>Science</option><option>Yoga</option><option>WebDev</option><option>Grammer</option><option>Punjabi</option></select><br><br>
+           <label for="email">Email Id</label><br>
+           <select id="email">
+            <!-- <option>teach1@gmail.com</option><option>teach2@gmail.com</option>
+        <option>teach3@gmail.com</option><option>teach4@gmail.com</option> -->
+           </select><br><br>
+            <div id="time-set">
+                <label for="time">Start Time</label>
+           <!-- <input type="time" id="taem" name="time"> -->
+              <select name="time" id="taem" >
+                <option value="09:00">09:00</option><option value="10:00">10:00</option><option value="11:00">11:00</option>
+                <option value="12:00">12:00</option><option value="01:00">01:00</option><option value="02:00">02:00</option><option value="03:00">03:00</option><option value="04:00">04:00</option><option value="05:00">05:00</option>
+              </select>
+            <label for="time" id="end">End Time</label><br>
+            <!-- <input type="time" id="time" name="time"><br> -->
+             <select name="time" id="time" >
+                <option value="10:00">10:00</option><option value="11:00">11:00</option>
+                <option value="12:00">12:00</option><option value="01:00">01:00</option><option value="02:00">02:00</option><option value="03:00">03:00</option><option value="04:00">04:00</option><option value="05:00">05:00</option>
+             </select>
+             <br>
+            </div><br>
+             <label for="text">Day</label><br>
+             <select id="day"><option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+                <option>Thursday</option><option>Friday</option><option>Saturday</option>
+             </select><br>
+
+             <label for="date">Date</label><br>
+        <input type="date" id="date"><br><br>
+
+            <label for="no.">Room Number</label><br>
+            <input type="text" id="room" ><br><br>
+             
+            <span id="buton"><button type="button" id="cancel">Cancel</button>
+            <button type="submit" id="save">Save</button></span>
+    </form>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded",function(){
+     fetch("/route/getAllTeacherEmails")
+     .then(res=>res.json())
+     .then((data)=>{
+        const emailDropdown=document.getElementById("email");
+        data.forEach((teacher) => {
+            const option = document.createElement("option");
+            option.value = teacher.email;
+            option.textContent = teacher.email;
+            emailDropdown.appendChild(option);
+        });
+     }).catch((err) => {
+          console.error("Error fetching teacher emails:", err);
+        });
+    })
+ let cancelCount=0;
+  function fun(event){
+    event.preventDefault();
+    const lectureNo=document.getElementById("select").value;
+    const startime=document.getElementById("taem").value;
+    const endtime=document.getElementById("time").value;
+     const subjectName=document.getElementById("subname").value;
+      const roomNo=document.getElementById("room").value;
+       const date=document.getElementById("date").value;
+       const btn=document.getElementById("save");
+      const emailId=document.getElementById("email").value;
+       const day=document.getElementById("day").value;
+       
+    
+    fetch("/route/updateTimetable",{
+        method:'POST',
+        headers:{"Content-type":"application/json"},
+        body:JSON.stringify({
+        email: emailId,
+       day: day,
+         date: date, 
+       lecture: lectureNo,
+      subjectName: subjectName,
+      roomNo: roomNo,
+      startTime: startime,
+       endTime: endtime})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        alert(data.message);
+         localStorage.setItem("selectedEmail", emailId);
+        if(data.message === "Timetable updated successfully!"){
+            window.location.href="/table";
+        }
+    })
+    .catch(err=>console.log(err));
+  }
+ 
+const cancel=document.getElementById("cancel");
+cancel.addEventListener("click",function(){
+    cancelCount++;
+    if(cancelCount === 1){
+document.getElementById("select").value="1";
+    document.getElementById("subname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("taem").value = "";
+    document.getElementById("time").value = "";
+    document.getElementById("day").value = "";
+     document.getElementById("date").value = "";  
+    document.getElementById("room").value = "";
+    }
+    else{
+        window.location.href="/table";
+    }
+    
+})
+  
+
+    </script>
+</body>
+</html>

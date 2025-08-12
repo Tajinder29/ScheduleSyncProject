@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppealLeave</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <form id="leaveForm">
+        <p>📝AppealLeave</p>
+       <div id="input-date" required><label for="Date ">Date : </label><br><input type="date" value="date"  id="date" placeholder="Date of leave" required></div>
+        <div id="reason"><label for="Reason">Reason :</label><br><textarea cols="41" rows="8" name="reason" id="textarea" placeholder="Reason for leave" required></textarea></div>
+         <button id="button" type="submit">Submit Form</button>
+    </form>
+
+
+    <h3>Your Leave Requests</h3>
+    <div id="all-leaves-container"></div>
+    <script src="form.js"></script>
+</body>
+
+</html>

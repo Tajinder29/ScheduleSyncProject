@@ -1,0 +1,73 @@
+body{
+            background-color: black;
+        }
+        h1{
+             color:purple;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #form{
+          background-color: whitesmoke;
+          height:650px;
+          width:590px;
+          border-radius:5px;
+          margin-left:350px;
+          
+        }
+        #form-submit{
+            
+          font-size:20px;
+          margin-left:40px;
+          
+          
+        }
+        #select,#subname,#room,#day,#date,#email{
+            border:grey;
+            padding:5px;
+            border-radius: 5px ;
+            width:500px;
+        }
+        #time{
+            padding:5px;
+            border-radius: 5px ;
+            width:150px;
+            
+        }
+        #taem{
+            border-radius: 5px ;
+            width:150px;
+            
+        }
+        #save{
+            background-color: rgba(128, 0, 128, 0.756);
+            border-radius: 5px;
+            margin-left:15px;
+            color:white;
+        }
+        #buton{
+            margin-left:150px;
+            
+        }
+        #cancel,#save{
+            padding:10px;
+            border-radius: 5px;
+            border: none;
+        }
+        #cancel{
+            background-color: rgba(128, 128, 128, 0.668);
+        }
+        label{
+            font-weight: 490;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #time-set{
+            display: flex;
+            flex-direction: row;
+            row-gap: 60px;
+            
+        }
+        #end{
+            margin-left: 30px;
+        }
+        input{
+            border-color: rgba(128, 128, 128, 0.63);
+        }

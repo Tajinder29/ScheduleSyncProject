@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>  
+    <div id="form2">  
+    <form onsubmit="login(event)"autocomplete="off">
+    <h1>Login </h1>
+    <label>Email:</label>
+    <input type="Email" id="email"name="nameEmail" placeholder="Enter your email" required autocomplete="off" />
+    <label>Password:</label>
+    <input type="password" id="paswrd"name="namepassword" placeholder="Enter your password" required autocomplete="new-password" />
+    <button type="submit" >Login</button><a href="signup.html">Signup</a>
+        </form>
+    </div>
+    <script>
+function login(event){
+     event.preventDefault();
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("paswrd").value.trim();
+const role=document.querySelector('input[name="roles"]:checked')?.value;
+
+if (!email || !password ) {//|| !role 
+        alert("Please fill in all fields and select a role.");
+        return;
+    }
+const passwordCondition = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+if (!passwordCondition.test(password)) {
+        alert("Password must be at least 8 characters long and include:\n- Uppercase letter\n- Lowercase letter\n- Number\n- Special character");
+        return;
+    }
+fetch('/route/login',{
+    method:'POST',
+    credentials:"include",
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({email,password}),//,role
+    
+})
+.then(res =>res.json())
+.then(data=>{
+    if (data.role === "Admin") {
+          //window.location.href = "table.html";
+        window.location.href = "/table";
+      
+    } else if (data.role === "Teacher") {
+        localStorage.setItem("loginEmail",email);
+        //window.location.href = "Teachertable.html";
+        window.location.href = "/Teachertable";
+}
+})
+.catch(err =>{
+    console.log("Error:", err.message);
+    alert("Something went wrong. Try again.");
+})
+
+}
+</script>
+</body>
+
+</html>
