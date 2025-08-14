@@ -3,6 +3,7 @@ import { signup ,login ,logout} from '../controller/authController.js';
 import { updateTimetable ,getTimetable ,getdata, getAllTeacherLeaves,getAllTeacherData,getAllTeacherEmails ,
     updateLeaveStatus,getAllLeaves,getAllApprovedLeaves,sendAdjustmentRequest,getInboxRequests,getSessionEmail,acceptAdjustmentRequest,updateAdjustmentRequestStatus } from '../controller/TimetableController.js';
 import {getUserImage ,upload, uploadImage} from '../controller/multerConroller.js';
+import {forgotPassword, resetPassword} from "../controller/validationController.js";
 const router=express.Router();
 router.post("/signup",signup);
 router.post("/login",login);
@@ -23,5 +24,7 @@ router.post("/sendAdjustmentRequest", sendAdjustmentRequest);
 router.get("/adjustment/inbox", getInboxRequests);
 router.get("/session/email", getSessionEmail);
 router.post("/acceptAdjustmentRequest ",acceptAdjustmentRequest );
+router.post("/forgotPassword",forgotPassword);
+router.post("/resetPassword",resetPassword);
 //router.post("/adjustment/accept" , acceptAdjustmentRequest");
 export default router;  

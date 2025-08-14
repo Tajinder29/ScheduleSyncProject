@@ -6,7 +6,8 @@ import { fileURLToPath } from 'url';
 import router from './router/user.js';
 import { isAuthentication,isAdmin,isTeacher} from './middleware/authMiddleware.js';
 import connectDB from './config/db.js';
-
+import dotenv from "dotenv";
+dotenv.config();
 const __filename = fileURLToPath(import.meta.url);//current directory name
 const __dirname = dirname(__filename); 
 const app=express();

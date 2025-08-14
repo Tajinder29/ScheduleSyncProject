@@ -8,16 +8,108 @@
 </head>
 <body>  
     <div id="form2">  
-    <form onsubmit="login(event)"autocomplete="off">
+    <form onsubmit="login(event)"autocomplete="off" id="loginForm">
     <h1>Login </h1>
     <label>Email:</label>
     <input type="Email" id="email"name="nameEmail" placeholder="Enter your email" required autocomplete="off" />
     <label>Password:</label>
     <input type="password" id="paswrd"name="namepassword" placeholder="Enter your password" required autocomplete="new-password" />
+     <a href="#" onclick="forgetPassword()">Forgot Password</a>
     <button type="submit" >Login</button><a href="signup.html">Signup</a>
         </form>
+        <div id="forgetPassword" class="hidden">
+       Email :<input type="email" name="email" id="forgetemail" placeholder="Enter email"   required/>
+       <button type="submit"id="submitEmail" >Reset</button>
+    </div>
+        <div id="otp-div" class="hidden">
+         Email :<input type="email" name="email" id="otpemail" placeholder="Enter email"   required/>
+         Enter OTP : <input type="number" id="otp" name="otp" placeholder="Enter OTP" required/>
+            <button type="submit"id=submitDetails >Submit</button>
+    </div>
+    <div id="reset" class="hidden">
+      Email :<input type="email" name="email" id="resetEmail" placeholder="Enter email"   required/>
+         Enter OTP : <input type="number" id="resetotp" name="otp" placeholder="Enter OTP" required/>
+     New Password :<input type="password" id="new-password"name="namepassword" placeholder="Enter your New password" required  />
+     Confirm Password :<input type="password" id="confirmPassword"name="namepassword" placeholder="Enter your Confirm password" required />
+     <button type="submit"id="submitReset" >Submit</button>
+    </div>
     </div>
     <script>
+        function forgetPassword(){
+             document.getElementById("loginForm").classList.add("hidden");
+            document.getElementById("forgetPassword").classList.remove("hidden");
+        }
+        document.getElementById("submitEmail").addEventListener("click",function(e){
+            e.preventDefault();
+             const email = document.getElementById("forgetemail").value.trim();
+             if (!email) {
+             alert("Please enter your email");
+               return;
+             }
+                fetch("/route/forgotPassword",{
+                    method:"POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email })
+                })
+                .then(res => res.json())
+                .then(data => {
+                if (data.message === "OTP sent to email") {
+                alert("OTP sent to your email");
+                document.getElementById("forgetPassword").classList.add("hidden");
+               document.getElementById("otp-div").classList.remove("hidden");
+                // document.getElementById("otpemail").value = email;
+               } else {
+                alert(data.message || "Error sending OTP");
+             }
+          })
+          .catch(err => {
+           console.error(err);
+           alert("Something went wrong.");
+        });
+    })
+    
+    document.getElementById("submitDetails").addEventListener("click",function(e){
+        e.preventDefault();
+        const email = document.getElementById("otpemail").value.trim();
+         const otp = document.getElementById("otp").value.trim();
+         if(!email || !otp){
+            alert("Enter both email and OTP");
+           return;
+         }
+         document.getElementById("otp-div").classList.add("hidden");
+         document.getElementById("reset").classList.remove("hidden");
+
+    })
+
+document.getElementById("submitReset").addEventListener("click",function(e){
+     e.preventDefault();
+     const email=document.getElementById("resetEmail").value.trim();
+     const otp=document.getElementById("resetotp").value.trim();
+     const newPassword = document.getElementById("new-password").value.trim();
+     const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    if (!newPassword || !confirmPassword) {
+         alert("Please fill in both password fields");
+         return;
+     }
+    if (newPassword !== confirmPassword) {
+         alert("Passwords do not match");
+        return;
+    }
+   fetch("/route/resetPassword", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, otp, newPassword })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message || "Password reset complete");
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Something went wrong.");
+    });
+})
+
 function login(event){
      event.preventDefault();
 const email=document.getElementById("email").value.trim();
@@ -28,11 +120,11 @@ if (!email || !password ) {//|| !role
         alert("Please fill in all fields and select a role.");
         return;
     }
-const passwordCondition = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-if (!passwordCondition.test(password)) {
-        alert("Password must be at least 8 characters long and include:\n- Uppercase letter\n- Lowercase letter\n- Number\n- Special character");
-        return;
-    }
+// const passwordCondition = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+// if (!passwordCondition.test(password)) {
+//         alert("Password must be at least 8 characters long and include:\n- Uppercase letter\n- Lowercase letter\n- Number\n- Special character");
+//         return;
+//     }
 fetch('/route/login',{
     method:'POST',
     credentials:"include",
